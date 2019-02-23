@@ -1,11 +1,12 @@
 #include "opencv2/opencv.hpp"
 #include <string>
-#include <filesystem>
 
 #if __cplusplus < 201703L // If the version of C++ is less than 17
+#include <experimental/filesystem>
 // It was still in the experimental:: namespace
 namespace fs = std::experimental::filesystem;
 #else
+#include <filesystem>
 namespace fs = std::filesystem;
 #endif
 
@@ -32,10 +33,10 @@ int main() {
 		Mat frame;
 		cap >> frame;
 		fIdxStr = to_string(fIdx);
-		imshow("test", frame);
+		//imshow("test", frame);
 		fIdxStr = string(zeroPad - fIdxStr.length(), '0') + fIdxStr;
 		imwrite(nameToRec + "/" + nameToRec + fIdxStr + imgExt, frame);
-		waitKey(60);
+		waitKey(70);
 		fIdx++;
 	}
 	return 0;
